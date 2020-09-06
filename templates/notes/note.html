@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+    {{ note.title }}
+{% endblock %}
+
+{% block content %}
+    <h1>{{ note.title }}</h1>
+    <p>Description :- {{ note.description }}</p>
+    <h4>Deadline :- {{ note.deadline }}</h4>
+    <h4>{{ note.completed }}</h4>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit">Update</button>
+    </form>
+{% endblock %}
